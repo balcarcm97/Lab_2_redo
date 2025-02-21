@@ -1,0 +1,23 @@
+---
+title: "lab_2_exercises_redo"
+format: html
+editor: visual
+---
+```{r}
+install.packages("dplyr", repos = "https://cloud.r-project.org/")
+```
+```{r}
+library(dplyr)
+```
+```{r}
+ls()
+```
+```{r}
+glimpse(tree_dat)
+```
+
+
+
+
+
+
