@@ -18,17 +18,14 @@ ls()
 
 ```{r}
 #1
+#This is a large data set with 8 columns. Details about physical aspects of the trees are noted as well as codes in order to denote the species.
 tree_dat <- read_csv("tree_dat.csv")
 glimpse(tree_dat)
 ```
 
 ```{r}
 #2
-tree_dat %>% 
-  filter(standID == 1) %>% 
-  tally()
-```
-```{r}
+#There are 979 records in stad 1.
 tree_count1 <- tree_dat %>% 
   filter(standID == 1)
 print(tree_count1)
@@ -39,8 +36,8 @@ print(tree_count1)
 tree_dat %>% 
   filter(species %in% c("ABBA", "PIST")) %>% 
   count(species)
-#ABBA count is 13033
-#PST count is 4188
+#ABBA count is 13033.
+#PST count is 4188.
 ```
 
 ```{r}
@@ -50,8 +47,8 @@ last_year <- max(tree_dat$year, na.rm = TRUE)
 tree_dat %>% 
   filter(year == last_year, age > 200) %>% 
   tally()
-#Last year is 2007
-#7 trees older than 200
+#The last year is 2007
+#There are 7 trees older than 200 years.
 ```
 
 ```{r}
@@ -61,6 +58,7 @@ tree_dat %>%
 
 oldest_tree <- tree_dat %>% 
   slice_max(order_by = age, n = 1)
+#The oldest tree is a pinus resinosa at 269 years of age. 
 ```
 
 ```{r}
@@ -76,6 +74,7 @@ print(oldest_2001)
 tree_dat %>% 
   filter(year == 2002) %>% 
   slice_sample(prop = .3)
+#687 trees are in a 30% sample in 2002.
 ```
 
 ```{r}
@@ -84,7 +83,7 @@ tree_dat %>%
   filter(year == 2007, standID == 5) %>% 
   arrange(desc(rad_ib)) %>%
   slice_head(n = 3)
-#Three tree IDs are: 128, 157, 135
+#The three tree IDs are: 128, 157, 135.
 ```
 
 ```{r}
@@ -137,6 +136,7 @@ bac <- tree_dat %>%
   mutate(BA_m2 = ((ba_in_cm) /100)^2) %>% 
   filter(year == 2007, species == "POTR") 
 mean(bac$BA_m2)
+#The mean Basal Area Column of POTR in 2007 was 1.472944e-08
 ```
 
 ```{r}
